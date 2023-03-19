@@ -1,0 +1,4 @@
+featurelist :
+-post
+-messages
+-notificaation
