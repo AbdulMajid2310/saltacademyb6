@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parkir Qu</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1>Parkir Qu</h1>
+    <div>
+        <form id="adCarForm">
+            <div>
+                <div><label form="owner"></label></div>
+                <input type="text" placeholder="Name." id="owner">
+            </div>
+
+            <div>
+                <div><label for="platnum"></label></div>
+                <input type="text" placeholder="Plat No." id="platnum">
+            </div>
+
+            <div>
+                <div><label for="brand">Brand</label></div>
+                <select id="brand">
+                    <option>Tesla</option>
+                    <option>Marcedes</option>
+                    <option>Rolls  Royce</option>
+                    <option>BMW</option>
+                    <option>Toyota</option>
+                </select>
+            </div>
+
+            <input type="submit" value="Add">
+        </form>
+    </div>
+
+    <div class="card_container" id="card_container">
+        <div class="car_card">
+            <img class="car_pic" src="icon-car.png" alt="">
+            <div>
+                <p>B 1232 00</p>
+                <p>Toyota</p>
+                <p id="owner">Owner</p>
+            </div>
+            <div class="detele">X</div>
+        </div>
+    </div>
+</body>
+
+</html>
