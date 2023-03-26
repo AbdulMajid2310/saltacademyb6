@@ -1,69 +1,89 @@
-const addStudent = document.getElementById("addStudent");
-const cardcontainer = document.getElementById("card_container");
+(function() {
+    let btnAddStudent = document.querySelector("#add-student");
+    let modal = document.querySelector(".modal");
+    let listBodyStudents = document.querySelector(".list-body");
 
-addStudent.addEventListener("submit", (e) => {
-    e.preventDefault {}
-    console.log("submit form");
+    let formStudent = document.querySelector("#form-student");
+    let modalClose = document.querySelectorAll("[modal-close]");
 
-    const studentElement = document.getElementById('student');
-    const bacthElement = document.getElementById('batch');
-    const kelasElemen = document.getElementById('kelas');
+    addListenerToggelClass(btnAddStudent, "show");
 
-    const studentValue = studentElement.value;
-    const batchValue = bacthElement.value;
-    const kelasValue = kelasElemen.value;
-
-    addElement(studentValue, batchValue, kelasValue);
-
-    //reset form
-    studentElement.value = ''
-    bacthElement.value = ''
-
-})
-
-const searchInput = document.getElementById("search");
-
-searchInput.addEventListener("kenyup", (e) => {
-    const cards = document.getElementsByClassName("studentText");
-    const searchValue = e.target.value.toLowerCase();
-    for (let card of cards) {
-        const studentElement = card.getElementsByClassName("studentText")[0];
-        const studentElementText = studentElement.textContent;
-
-        const isMatch = studentElementText.toLocaleLowerCase().includes(searchValue);
-        card.style.display = isMatch ? 'flex'
-        "block";
-        "none";
-    }
-})
-
-function attachEventListenerOnDeleteBtn(element) {
-    element.addEventListener("click", (e) => {
-        const card = e.target.parentElement;
-        cardcontainer.removeChild(card);
-    });
-}
-console.log()
-
-function addElement(a, b, c) {
-    const newElement = document.createElement('div');
-    newElement.innerHTML = <
-        img class = "image"
-    src = "image.jpg" / >
-        <
-        div >
-        <
-        p > $ { a } < /p> <
-        p > $ {
-            b < /p> <
-                p > $ { c } < /p> <
-                /div >
-
-            <
-            div class = "deteleBtn" > X < /div>
-
-            newElement.className = 'student_card';
-
-            cardContainer.appendChild(newElement);
-
+    listBodyStudents.addEventListener("click", function(e) {
+        if (e.target.classList.contains("student-delete-btn")) {
+            let id = e.target.dataset.id;
+            deleteStudent(id);
+            showStudents();
         }
+    });
+
+    modalClose.forEach((element) => {
+        addListenerToggelClass(element, "show");
+    });
+
+    formStudent.addEventListener("submit", function(e) {
+        e.preventDefault();
+        let formData = new FormData(this);
+        if (!formData.get("name")) return;
+        addNewStudent({ id: Math.floor(new Date().getTime() / 1000), name: formData.get("name") });
+        ToggelCloseModal();
+        showStudents();
+        this.reset();
+    });
+
+    showStudents();
+
+    function addListenerToggelClass(element, classElement) {
+        element.addEventListener("click", function(e) {
+            e.preventDefault();
+            ToggelCloseModal();
+        });
+    }
+
+    function deleteStudent(id) {
+        let students = getStudents();
+
+        return setStudents(students.filter((e) => e.id != id));
+    }
+
+    function ToggelCloseModal() {
+        modal.classList.toggle("show");
+    }
+
+    function addNewStudent(student) {
+        let students = getStudents();
+        students.push(student);
+        return setStudents(students);
+    }
+
+    function getStudents() {
+        return JSON.parse(localStorage.getItem("student-management-data")) || [];
+    }
+
+    function setStudents(data) {
+        return localStorage.setItem("student-management-data", JSON.stringify(data));
+    }
+
+    function showStudents() {
+        listBodyStudents.innerHTM = "";
+        let lists = "";
+        getStudents().forEach((element) => {
+            lists += `
+            <div class="list-item">
+                        <div class="card student-card">
+                            <div class="card-body">
+                                <div class="student-profile">
+                                    <img class="student-image" src="https://i.pravatar.cc/300" alt="">
+                                </div>
+                                <h1 class="student-name">${element.name}</h1>
+                            </div>
+                            <div class="card-footer">
+                                <div class="flex justify-content-center">
+                                    <button class="btn btn-outline-danger student-delete-btn"  data-id="${element.id}"> Hapus</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>`;
+        });
+        listBodyStudents.innerHTML = lists;
+    }
+})();
