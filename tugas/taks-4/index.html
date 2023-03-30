@@ -2,58 +2,46 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Siswa</title>
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student</title>
+    <link rel="stylesheet" href="css/style.css" />
 </head>
 
 <body>
-    <h1>Biodata Siswa</h1>
-
-    <div>
-        <form id="addStudent">
-            <div class="formKelas">
-                <div>
-                    <label for="nama_lengkap">Nama Lengkap</label>
-                    <input type="text" id="nama_lengkap" name="nama_lengkap" placeholder="Nama Lengkap">
-                </div>
-
-                <div>
-                    <label for="batch">Batch</label>
-                    <input type="text" id="batch" name="batch" placeholder="Batch">
-                </div>
-
-                <div>
-                    <label for="kelas">Kelas</label>
-                    <select id="kelas" name="kelas">
-                    <option>Pilih Kelas</option>
-                    <option>Frond-End</option>
-                    <option>Cyber Security</option>
-                    <option>Back-End</option>
-                    <option>Fullstack Javascript</option>
-                    </select>
-                </div>
-
-                <input type="submit" value="Add">
+    <div class="app">
+        <div class="container">
+            <div class="list">
+                <header class="list-header">
+                    <button class="btn" id="add-student">Tambah Data</button>
+                </header>
+                <main class="list-body"></main>
             </div>
-        </form>
-    </div>
-
-    <div class="card_container" id="card_container">
-        <div class="student_card">
-            <img src="image1.jpg" alt="" width="100" height="80">
-            <div class="cardStudentText">
-                <p>Abdul Majid</p>
-                <p>6</p>
-                <p>Fullstack Javascript</p>
-            </div>
-
-            <div class="deteleBtn">x</div>
         </div>
     </div>
-    <script src="script.js" />
+
+    <div class="modal">
+        <div class="modal-dialog">
+            <a class="modal-close" modal-close href="javascript:void(0)">X</a>
+            <form action="#" id="form-student">
+                <div class="modal-header">
+                    <p class="modal-title">Tambah Form Biodata</p>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label class="form-label" for="">Nama Lengkap</label>
+                        <input type="text" name="name" class="form-input" />
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-outline-primary">Simpan</button>
+                        <button type="reset" modal-close class="btn btn-outline-danger">Batal</button>
+                    </div>
+            </form>
+            </div>
+        </div>
+        <script src="js/app.js"></script>
 </body>
 
 </html>
