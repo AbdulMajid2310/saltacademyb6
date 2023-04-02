@@ -1,6 +1,5 @@
 * {
-    background-color: bisque;
-    padding: 0px;
+    padding: 0;
     margin: 0;
 }
 
@@ -8,11 +7,74 @@ h1 {
     justify-content: center;
     padding: 15px;
     margin: auto;
+    display: block;
 }
 
-#adCarForm {
-    justify-content: center;
+form {
+    padding: 15px;
+    margin: 20px 15px;
+    background-color: bisque;
+    position: relative;
+    width: 200px;
+    height: 150px;
+    border-radius: 25px;
+}
+
+input[type=text],
+#brand {
+    border-radius: 25px;
+    background-color: white;
+    padding: 8px;
+}
+
+#brand {
+    width: 190px;
     border: 1px solid;
-    margin: 10px;
-    background-color: brown;
+}
+
+input[type=submit] {
+    padding: 5px;
+    width: 50px;
+    margin: 5px;
+    border-radius: 5px solid #222;
+}
+
+input[type=submit] {
+    justify-content: center;
+    position: relative;
+}
+
+img {
+    width: 150px;
+    height: 130px;
+}
+
+.car_card {
+    padding: 15px;
+    margin: 70px;
+    background-color: bisque;
+    position: relative;
+    width: 300px;
+    height: 100px;
+    border-radius: 25px;
+    display: flex;
+}
+
+.car_card div {
+    margin: 0px;
+    padding: 0;
+    list-style: none;
+    position: relative;
+    top: 0;
+}
+
+p {
+    left: 50px;
+    position: relative;
+    padding-top: 10px;
+}
+
+.deleteBtn {
+    left: 70px;
+    font-size: larger;
 }
